@@ -2,6 +2,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 
 bin_PROGRAMS = oka
 oka_SOURCES = common.h common.c tab.h tab.c yacc.h anal.h anal.c gen.h gen.c main.c \
+  ird.c ird.h \
   AMMUNITION/objstack.c \
   AMMUNITION/hashtab.c \
   AMMUNITION/allocate.c \
@@ -11,7 +12,7 @@ oka_SOURCES = common.h common.c tab.h tab.c yacc.h anal.h anal.c gen.h gen.c mai
   AMMUNITION/bits.c \
   AMMUNITION/commline.c \
   AMMUNITION/ticker.c
-nodist_oka_SOURCES = yacc.c ird.c ird.h
+nodist_oka_SOURCES = yacc.c
 CLEANFILES = yacc.c
 oka_CFLAGS = -I$(srcdir)/AMMUNITION
 oka_LDFLAGS = -static
