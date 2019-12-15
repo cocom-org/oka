@@ -1,12 +1,20 @@
-# Cygwin can not find dll without changing PATH
-PATH := ${PATH}:../AMMUNITION/.libs:../../AMMUNITION/.libs
+AUTOMAKE_OPTIONS = subdir-objects
 
 bin_PROGRAMS = oka
-oka_SOURCES = common.h common.c tab.h tab.c yacc.h anal.h anal.c gen.h gen.c main.c
+oka_SOURCES = common.h common.c tab.h tab.c yacc.h anal.h anal.c gen.h gen.c main.c \
+  AMMUNITION/objstack.c \
+  AMMUNITION/hashtab.c \
+  AMMUNITION/allocate.c \
+  AMMUNITION/position.c \
+  AMMUNITION/errors.c \
+  AMMUNITION/vlobject.c \
+  AMMUNITION/bits.c \
+  AMMUNITION/commline.c \
+  AMMUNITION/ticker.c
 nodist_oka_SOURCES = yacc.c ird.c ird.h
-CLEANFILES = yacc.c ird.c ird.h
-oka_CFLAGS = -I$(srcdir)/../AMMUNITION
-oka_LDFLAGS = -static ../AMMUNITION/libcocom.la -lm
+CLEANFILES = yacc.c
+oka_CFLAGS = -I$(srcdir)/AMMUNITION
+oka_LDFLAGS = -static
 dist_doc_DATA = oka.txt oka.info oka.html oka-1.html oka-2.html oka-3.html oka-4.html oka-5.html\
    	        oka-6.html oka-7.html oka-8.html oka-9.html oka.pdf oka.dvi oka.ps
 dist_man_MANS = oka.1
